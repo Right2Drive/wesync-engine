@@ -1,3 +1,3 @@
-var ws = require('./dist/ws')
+var ws = require('./dist/wse')
 
-module.exports = ws
+module.exports = wse
