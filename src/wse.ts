@@ -1,7 +1,8 @@
 import * as WebTorrent from 'webtorrent'
 
-/** Type of supported files */
-type WeSyncFile = string | File | Buffer | NodeJS.ReadableStream
+import {
+  WeSyncFile,
+} from './types'
 
 /**
  * WeSync Engine
@@ -15,6 +16,8 @@ export default class WeSyncEngine {
   public constructor (file: WeSyncFile) {
     this._client = new WebTorrent()
     this._playing = false
+
+    // TODO: Implement
   }
 
   public get paused () {
@@ -41,6 +44,6 @@ export default class WeSyncEngine {
    * Swap out the current video file w/ a new video file
    */
   public swap () {
-    // Future Feature
+    // TODO: Future Feature
   }
 }
