@@ -8,12 +8,16 @@
   "license": "GPL-3.0",
   "private": false,
   "scripts": {
+    "clean": "yarn rimraf dist/",
+    "lint": "yarn tslint -c tslint.json -p tsconfig.json src/**/*.ts",
     "watch": "yarn build --watch",
     "build": "yarn build:dev",
     "build:dev": "yarn cross-env WEBPACK_ENV=dev yarn webpack",
     "build:prod": "yarn cross-env WEBPACK_ENV=prod yarn webpack",
     "cross-env": "./node_modules/.bin/cross-env",
-    "webpack": "./node_modules/.bin/webpack"
+    "webpack": "./node_modules/.bin/webpack",
+    "rimraf": "./node_modules/.bin/rimraf",
+    "tslint": "./node_modules/.bin/tslint --project tsconfig.json"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.51",

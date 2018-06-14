@@ -24,7 +24,6 @@ module.exports = () => ({
             {
                 loader: 'tslint-loader',
                 options: {
-                  emitErrors: true,
                   configFile: root('tslint.json'),
                   tsConfigFile: root('tsconfig.json'),
                   typeCheck: true,
@@ -41,4 +40,7 @@ module.exports = () => ({
   plugins: [
     new CheckerPlugin(),
   ],
+  stats: {
+    errorDetails: true,
+  },
 })
