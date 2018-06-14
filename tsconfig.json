@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2016",
     "module": "commonjs",
     "importHelpers": true,
     "strict": true,
@@ -11,6 +11,25 @@
     ]
   },
   "include": [
-    "./src/**/*"
-  ]
+    "./src/**/*.ts"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "useBabel": true,
+    "babelOptions": {
+        "babelrc": false,
+        "presets": [
+            [
+              "@babel/preset-env",
+              {
+                "targets": {
+                  "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+                },
+                "modules": false
+              }
+            ]
+        ]
+    },
+    "babelCore": "@babel/core",
+    "useCache": true
+  }
 }
