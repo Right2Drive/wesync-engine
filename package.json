@@ -10,6 +10,7 @@
   "scripts": {
     "clean": "yarn rimraf dist/",
     "lint": "yarn tslint -c tslint.json -p tsconfig.json src/**/*.ts",
+    "test": "echo \"no tests yet\"",
     "watch": "yarn build --watch",
     "build": "yarn build:dev",
     "build:dev": "yarn cross-env WEBPACK_ENV=dev yarn webpack",
