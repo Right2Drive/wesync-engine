@@ -5,31 +5,16 @@
     "importHelpers": true,
     "strict": true,
     "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "declarations",
+    "baseUrl": ".",
     "lib": [
-      "es2015",
+      "es2016",
       "dom"
     ]
   },
   "include": [
-    "./src/**/*.ts"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "useBabel": true,
-    "babelOptions": {
-        "babelrc": false,
-        "presets": [
-            [
-              "@babel/preset-env",
-              {
-                "targets": {
-                  "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-                },
-                "modules": false
-              }
-            ]
-        ]
-    },
-    "babelCore": "@babel/core",
-    "useCache": true
-  }
+    "./src/**/*.ts",
+    "./test/**/*.ts"
+  ]
 }
