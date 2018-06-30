@@ -13,11 +13,6 @@ module.exports = () => ({
   target: 'web',
   resolve: {
     extensions: ['.ts'],
-    plugins: [
-      new TsconfigPathsPlugin({
-        configFile: root('tsconfig.json'),
-      }),
-    ],
   },
   externals: {
     ramda: {

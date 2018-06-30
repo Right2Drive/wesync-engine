@@ -1,6 +1,9 @@
-import { test, Test } from '@/module'
-import Hello from '@/nested/hello'
+import * as R from 'ramda'
 
-console.log(test)
+function engine (arr: number[]) {
+  return R.filter(
+    R.lte(10),
+  )(arr)
+}
 
-export { Test, Hello }
+export { engine }
