@@ -1,5 +1,3 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-
 const { root } = require('./utils')
 
 module.exports = () => ({

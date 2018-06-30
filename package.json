@@ -10,6 +10,9 @@
   "scripts": {
     "clean": "yarn clean:dist",
     "clean:dist": "yarn rimraf dist/",
+    "clean:declarations": "yarn rimraf dist/declarations",
+    "clean:declarations:test": "yarn rimraf dist/declarations/test",
+    "copy:declarations": "yarn copyfiles -u 3 \"dist/declarations/src/**/*\" dist/",
     "lint": "yarn tslint -c tslint.json -p tsconfig.json \"src/**/*.ts\"",
     "test": "yarn mocha ./test/**/*.spec.ts",
     "watch": "yarn build --watch",
@@ -17,7 +20,7 @@
     "build:dev": "yarn clean && yarn cross-env WEBPACK_ENV=dev yarn webpack:build",
     "build:prod": "yarn clean && yarn cross-env WEBPACK_ENV=prod yarn webpack:build",
     "cross-env": "./node_modules/.bin/cross-env",
-    "webpack:build": "yarn webpack && yarn copyfiles -u 2 \"./dist/declarations/**/*\" ./dist/ && yarn rimraf dist/declarations",
+    "webpack:build": "yarn webpack && yarn clean:declarations:test && yarn copy:declarations && yarn clean:declarations",
     "webpack": "./node_modules/.bin/webpack",
     "rimraf": "./node_modules/.bin/rimraf",
     "tslint": "./node_modules/.bin/tslint --project tsconfig.json",
