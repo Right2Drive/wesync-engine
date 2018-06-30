@@ -5,7 +5,4 @@ const baseConfig = require('./base.conf.js')
 module.exports = () => merge(baseConfig(), {
   mode: 'production',
   devtool: 'source-map',
-  plugins: [
-
-  ]
 })

@@ -1,19 +1,31 @@
-const { CheckerPlugin } = require('awesome-typescript-loader')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 const { root } = require('./utils')
 
 module.exports = () => ({
+  cache: true,
   entry: root('src', 'index.ts'),
   output: {
     path: root('dist'),
-    filename: 'index.js'
+    filename: 'wesync-engine.js',
+    library: 'wesyncEngine',
   },
   target: 'web',
   resolve: {
     extensions: ['.ts'],
+    plugins: [
+      new TsconfigPathsPlugin({
+        configFile: root('tsconfig.json'),
+      }),
+    ],
   },
   externals: {
-    ramda: 'ramda',
+    ramda: {
+      commonjs: 'ramda',
+      commonjs2: 'ramda',
+      amd: 'ramda',
+      root: 'R',
+    },
   },
   module: {
     rules: [
@@ -32,14 +44,21 @@ module.exports = () => ({
         ]
       },
       {
-        test: /\.ts$/,
-        loader: 'awesome-typescript-loader'
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              babelrc: true,
+            },
+          },
+          {
+            loader: 'ts-loader'
+          },
+        ]
       },
     ],
   },
-  plugins: [
-    new CheckerPlugin(),
-  ],
   stats: {
     errorDetails: true,
   },

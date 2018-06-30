@@ -1,2 +1,6 @@
-let test: string
-test = 'hello'
+import { test, Test } from '@/module'
+import Hello from '@/nested/hello'
+
+console.log(test)
+
+export { Test, Hello }

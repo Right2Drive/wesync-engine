@@ -2,7 +2,7 @@
   "name": "wesync-engine",
   "version": "0.0.1",
   "description": "Video sync engine designed for WeSync platform",
-  "main": "src/index.ts",
+  "main": "dist/wesync-engine.js",
   "repository": "git@github.com:Right2Drive/wesync-engine.git",
   "author": "Right2Drive",
   "license": "GPL-3.0",
@@ -13,21 +13,30 @@
     "test": "echo \"no tests yet\"",
     "watch": "yarn build --watch",
     "build": "yarn build:dev",
-    "build:dev": "yarn cross-env WEBPACK_ENV=dev yarn webpack",
-    "build:prod": "yarn cross-env WEBPACK_ENV=prod yarn webpack",
+    "build:dev": "yarn clean && yarn cross-env WEBPACK_ENV=dev yarn webpack:build",
+    "build:prod": "yarn clean && yarn cross-env WEBPACK_ENV=prod yarn webpack:build",
     "cross-env": "./node_modules/.bin/cross-env",
+    "webpack:build": "yarn webpack && yarn copyfiles -u 2 \"./dist/declarations/**/*\" ./dist/ && yarn rimraf dist/declarations",
     "webpack": "./node_modules/.bin/webpack",
     "rimraf": "./node_modules/.bin/rimraf",
     "tslint": "./node_modules/.bin/tslint --project tsconfig.json"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.51",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.51",
     "@babel/preset-env": "^7.0.0-beta.51",
     "@types/ramda": "^0.25.33",
     "@types/webtorrent": "^0.98.4",
-    "awesome-typescript-loader": "^5.0.0",
+    "babel-loader": "^8.0.0-beta",
+    "copyfiles": "^2.0.0",
     "cross-env": "^5.2.0",
+    "mocha": "^5.2.0",
     "rimraf": "^2.6.2",
+    "source-map-loader": "^0.2.3",
+    "testdouble": "^3.8.1",
+    "ts-loader": "^4.4.2",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
     "tslint": "^5.9.1",
     "tslint-config-standard": "^7.0.0",
     "tslint-loader": "^3.6.0",
@@ -37,8 +46,8 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.51",
     "ramda": "^0.25.0",
-    "webtorrent": "^0.100.0",
-    "wesync-signal": "^0.0.1"
+    "webtorrent": "^0.100.0"
   }
 }
