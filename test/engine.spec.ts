@@ -1,19 +1,18 @@
 import { expect } from 'chai'
 
-import { engine } from '../src'
+import wesync, { Opts } from '../src'
 
 describe('my test', function () {
   it('should equal hello', async function () {
     // Arrange
-    const arr = [1, 12, 13, 6]
+    const opts: Opts = { selector: '.test' }
 
     // Act
-    const res = engine(arr)
+    const res = wesync(opts)
 
     // Assert
-    expect(res).to.contain(12)
-    expect(res).to.contain(13)
-    expect(res).to.not.contain(1)
-    expect(res).to.not.contain(6)
+    expect(res).to.be.an('object')
+    expect(res).to.haveOwnProperty('addListener')
+    expect(res.addListener).to.be.a('function')
   })
 })

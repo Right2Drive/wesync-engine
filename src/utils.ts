@@ -1,4 +1,4 @@
-import { Opts } from './types'
+import { Opts } from '.'
 
 function validateOpts (opts: Opts) {
   if (typeof opts !== 'object') {
